@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.Pedidos.DetallePedidoFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <TextView
+            android:id="@+id/textViewPedidoId"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            android:text="Pedido ID:"
+            android:textColor="#000000"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/editTextPedidoId"
+            android:layout_width="match_parent"
+            android:visibility="gone"
+            android:layout_height="50dp"
+            android:hint="Ingrese el ID del pedido"
+            android:enabled="false"/>
+
+        <TextView
+            android:id="@+id/textViewMesaId"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#000000"
+            android:textStyle="bold"
+            android:text="Mesa:" />
+
+        <androidx.appcompat.widget.AppCompatSpinner
+            android:id="@+id/spinnerMesa"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:enabled="false" />
+
+        <TextView
+            android:id="@+id/textViewUsuarioId"
+            android:layout_width="wrap_content"
+            android:visibility="gone"
+            android:layout_height="wrap_content"
+            android:textColor="#000000"
+            android:textStyle="bold"
+            android:text="Usuario ID:" />
+
+        <EditText
+            android:id="@+id/editTextUsuarioId"
+            android:layout_width="match_parent"
+            android:visibility="gone"
+            android:layout_height="50dp"
+            android:hint="Ingrese el ID del usuario"
+            android:enabled="false"/>
+
+        <TextView
+            android:id="@+id/textViewEstado"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#000000"
+            android:textStyle="bold"
+            android:text="Estado:" />
+
+        <androidx.appcompat.widget.AppCompatSpinner
+            android:id="@+id/spinnerEstado"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:enabled="false" />
+
+        <TextView
+            android:id="@+id/textViewPrecioTotal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#000000"
+            android:textStyle="bold"
+            android:text="Precio Total:" />
+
+        <EditText
+            android:id="@+id/editTextPrecioTotal"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:textColor="#000000"
+            android:hint="Ingrese el precio total"
+            android:enabled="false"/>
+
+            <TextView
+                android:id="@+id/textViewFecha"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#000000"
+                android:textStyle="bold"
+                android:text="Fecha y Hora:" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/editTextFecha"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:hint="Seleccionar fecha"
+                android:focusable="false"
+                android:clickable="true"
+                android:focusableInTouchMode="false" />
+
+            <EditText
+                android:id="@+id/editTextHora"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:hint="Seleccionar Hora"
+                android:focusable="false"
+                android:clickable="true"
+                android:focusableInTouchMode="false" />
+
+        </LinearLayout>
+
+
+        <TextView
+            android:id="@+id/textViewProductos"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#000000"
+            android:textStyle="bold"
+            android:text="Lista de Productos:" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvProdEnDetalleProd"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+        <Button
+            android:id="@+id/btnEditarPedido"
+            android:layout_width="match_parent"
+            android:layout_height="78dp"
+            android:backgroundTint="#673AB7"
+            android:textSize="18sp"
+            android:text="Editar Pedido" />
+
+    </LinearLayout>
+
+</FrameLayout>

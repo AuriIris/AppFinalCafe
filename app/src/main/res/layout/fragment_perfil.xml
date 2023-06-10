@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp"
+    android:background="#FFFFFF"
+    tools:context=".ui.Perfil.PerfilFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Código:"
+            android:textColor="#000000"
+            android:textSize="16sp"
+            android:visibility="gone"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/codigoEditText"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:enabled="false"
+            android:visibility="gone"
+            android:textColor="#000000"
+            android:textSize="16sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Nombre:"
+            android:textColor="#000000"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/nombreEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:enabled="false"
+            android:textColor="#000000"
+            android:textSize="16sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Rol:"
+            android:textColor="#000000"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+<!--        <EditText-->
+<!--            android:id="@+id/rolEditText"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:enabled="false"-->
+<!--            android:textColor="#000000"-->
+<!--            android:textSize="16sp" />-->
+        <androidx.appcompat.widget.AppCompatSpinner
+            android:id="@+id/spinnerRol"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="#FFFFFF"
+            android:enabled="false" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Email:"
+            android:textColor="#000000"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/emailEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:enabled="false"
+            android:textColor="#000000"
+            android:textSize="16sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Contraseña:"
+            android:textColor="#000000"
+            android:visibility="gone"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/contraseñaEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:enabled="false"
+            android:textColor="#000000"
+            android:visibility="gone"
+            android:textSize="16sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Permiso:"
+            android:textColor="#000000"
+            android:textStyle="bold"
+            android:textSize="16sp"
+             />
+
+<!--        <EditText-->
+<!--            android:id="@+id/permisoEditText"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:enabled="false"-->
+<!--            android:textColor="#000000"-->
+<!--            android:textSize="16sp" />-->
+        <androidx.appcompat.widget.AppCompatSpinner
+            android:id="@+id/spinnerPermiso"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="#FFFFFF"
+            android:enabled="false" />
+
+        <Button
+            android:id="@+id/editarGuardarButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Editar"
+            android:textColor="#FFFFFF"
+            android:backgroundTint="#673AB7"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+
+</FrameLayout>

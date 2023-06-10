@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.Mesas.DetalleMesasFragment">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <TextView
+                android:id="@+id/textViewMesaId"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="ID de Mesa" />
+
+            <EditText
+                android:id="@+id/editTextMesaId"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:hint="Ingrese el ID de Mesa"
+                android:enabled="false"/>
+
+            <TextView
+                android:id="@+id/textViewSucursalId"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="ID de Sucursal" />
+
+            <EditText
+                android:id="@+id/editTextSucursalId"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:hint="Ingrese el ID de Sucursal"
+                android:enabled="false"/>
+
+            <TextView
+                android:id="@+id/textViewNumero"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Número de Mesa" />
+
+            <EditText
+                android:id="@+id/editTextNumero"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:hint="Ingrese el Número de Mesa"
+                android:enabled="false"/>
+
+            <TextView
+                android:id="@+id/textViewEstado"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Estado de Mesa" />
+
+            <EditText
+                android:id="@+id/editTextEstado"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:hint="Ingrese el Estado de Mesa"
+                android:enabled="false"/>
+            <Button
+                android:id="@+id/buttonEditarGuardar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:backgroundTint="#673AB7"
+                android:text="Editar" />
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+</FrameLayout>

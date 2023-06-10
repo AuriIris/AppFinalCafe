@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.CierreDiario.CierreDiarioFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp"
+        android:layout_gravity="center"
+        android:gravity="center"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <TextView
+            android:id="@+id/textViewFechaDesde"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Fecha y Hora Desde:"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="8dp">
+
+            <EditText
+                android:id="@+id/editTextFechaDesde"
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:layout_weight="1"
+                android:clickable="true"
+                android:focusable="false"
+                android:focusableInTouchMode="false"
+                android:hint="Seleccionar fecha" />
+
+            <EditText
+                android:id="@+id/editTextHoraDesde"
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:layout_weight="1"
+                android:clickable="true"
+                android:focusable="false"
+                android:focusableInTouchMode="false"
+                android:hint="Seleccionar Hora" />
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/textViewFechaHasta"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Fecha y Hora Hasta:"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:layout_marginTop="16dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="8dp">
+
+            <EditText
+                android:id="@+id/editTextFechaHasta"
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:layout_weight="1"
+                android:clickable="true"
+                android:focusable="false"
+                android:focusableInTouchMode="false"
+                android:hint="Seleccionar fecha" />
+
+            <EditText
+                android:id="@+id/editTextHoraHasta"
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:layout_weight="1"
+                android:clickable="true"
+                android:focusable="false"
+                android:focusableInTouchMode="false"
+                android:hint="Seleccionar Hora" />
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btnCalcular"
+            android:layout_width="match_parent"
+            android:text="Calcular"
+            android:layout_height="78dp"
+            android:backgroundTint="#673AB7"
+            android:textSize="18sp"
+            android:layout_marginTop="16dp" />
+
+        <TextView
+            android:id="@+id/tvResultado"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:text="$0,00"
+            android:textSize="40sp"
+            android:textColor="#000000"
+            android:gravity="center_horizontal" />
+
+
+    </LinearLayout>
+</FrameLayout>
