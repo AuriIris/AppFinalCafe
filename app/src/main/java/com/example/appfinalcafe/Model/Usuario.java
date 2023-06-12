@@ -29,6 +29,9 @@ public class Usuario implements Serializable {
         this.mail = usuario;
         this.clave = clave;
     }
+    public Usuario(String usuario) {
+        this.mail = usuario;
+    }
 
     public int getId() {
         return id;

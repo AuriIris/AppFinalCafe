@@ -57,4 +57,17 @@ public class LoginViewModel extends AndroidViewModel {
             }
         });
     }
+    public void loginGoogle(String email) {
+        SharedPreferences sp = context.getSharedPreferences("token.xml", 0);
+        SharedPreferences.Editor editor = sp.edit();
+        editor.putString("email", email);
+        editor.apply();
+
+        // Inicia la siguiente actividad
+        Intent intent = new Intent(context, MainActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        context.startActivity(intent);
+    }
+
+
 }

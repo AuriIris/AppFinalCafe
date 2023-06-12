@@ -51,6 +51,15 @@
             android:layout_height="wrap_content"
             android:backgroundTint="#673AB7"
             android:text="Login" />
+
+        <com.google.android.gms.common.SignInButton
+            android:id="@+id/btnGoogle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp"
+            android:layout_gravity="center_horizontal"
+            android:text="Google" />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

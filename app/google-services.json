@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "587971248318",
+    "project_id": "nubar-feba5",
+    "storage_bucket": "nubar-feba5.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:587971248318:android:1882c37e40340311b91eef",
+        "android_client_info": {
+          "package_name": "com.example.appfinalcafe"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "587971248318-afop82oj5pibk0mdolgnv58qmoe2id0v.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.appfinalcafe",
+            "certificate_hash": "11f1eda0478eee28693a6384d54caace6afb2df0"
+          }
+        },
+        {
+          "client_id": "587971248318-l73qd0qnc14gu44i8nb9f1os9vnl119j.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAU1USTLC0k6wPMbLbm2_MOCno5TAyjZSk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "587971248318-hnq5do2qi83o1kdjhmonqmrh4m4et52v.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
