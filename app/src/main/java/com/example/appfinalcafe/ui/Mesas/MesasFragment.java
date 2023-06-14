@@ -49,7 +49,7 @@ public class MesasFragment extends Fragment implements MesasAdapter.OnItemClickL
             public void onClick(View v) {
                 Bundle bundle = new Bundle();
 
-                Navigation.findNavController(requireView()).navigate(R.id.action_mesasFragment_to_detalleMesasFragment, bundle);
+              //  Navigation.findNavController(requireView()).navigate(R.id.action_mesasFragment_to_detalleMesasFragment, bundle);
             }
         });
 
@@ -79,6 +79,6 @@ public class MesasFragment extends Fragment implements MesasAdapter.OnItemClickL
     public void onMesaClick(Mesa mesa) {
         Bundle bundle = new Bundle();
         bundle.putSerializable("mesa", mesa);
-        Navigation.findNavController(requireView()).navigate(R.id.action_mesasFragment_to_detalleMesasFragment, bundle);
+       // Navigation.findNavController(requireView()).navigate(R.id.action_mesasFragment_to_detalleMesasFragment, bundle);
     }
 }

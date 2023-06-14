@@ -22,7 +22,7 @@
             android:title="Cierre Diario" />
         <item
             android:id="@+id/logoutFragment"
-            android:icon="@drawable/ic_menu_slideshow"
+            android:icon="@drawable/ic_menu_camera"
             android:title="Logout" />
 
     </group>

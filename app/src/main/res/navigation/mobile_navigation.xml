@@ -18,32 +18,22 @@
     <fragment
         android:id="@+id/nav_slideshow"
         android:name="com.example.appfinalcafe.ui.Productos.ProductosFragment"
-        android:label="Procuctos"
-        tools:layout="Procuctos" >
+        android:label="Productos"
+        tools:layout="Productos" >
         <action
             android:id="@+id/action_nav_slideshow_to_detallePedidoFragment"
             app:destination="@id/detallePedidoFragment" />
         <action
-            android:id="@+id/action_nav_slideshow_to_detalleProductosFragment"
-            app:destination="@id/detalleProductosFragment" />
-        <action
             android:id="@+id/action_nav_slideshow_to_seleccionarProductoFragment"
             app:destination="@id/seleccionarProductoFragment" />
     </fragment>
-    <fragment
-        android:id="@+id/mesasFragment"
-        android:name="com.example.appfinalcafe.ui.Mesas.MesasFragment"
-        android:label="Mesas"
-        tools:layout="Mesas" >
-        <action
-            android:id="@+id/action_mesasFragment_to_detalleMesasFragment"
-            app:destination="@id/detalleMesasFragment" />
-    </fragment>
+
     <fragment
         android:id="@+id/perfilFragment"
         android:name="com.example.appfinalcafe.ui.Perfil.PerfilFragment"
         android:label="Perfil"
         tools:layout="Perfil" />
+
     <fragment
         android:id="@+id/logoutFragment"
         android:name="com.example.appfinalcafe.ui.Logout.LogoutFragment"
@@ -57,24 +47,7 @@
         android:name="com.example.appfinalcafe.LoginActivity"
         android:label="Login"
         tools:layout="Login" />
-    <fragment
-        android:id="@+id/detalleProductosFragment"
-        android:name="com.example.appfinalcafe.ui.Productos.DetalleProductosFragment"
-        android:label="Detalle de Productos"
-        tools:layout="Detalle de Productos" >
-        <action
-            android:id="@+id/action_detalleProductosFragment_to_nav_slideshow"
-            app:destination="@id/nav_slideshow" />
-    </fragment>
-    <fragment
-        android:id="@+id/detalleMesasFragment"
-        android:name="com.example.appfinalcafe.ui.Mesas.DetalleMesasFragment"
-        android:label="Detalle de Mesas"
-        tools:layout="Detalle de Mesas" >
-        <action
-            android:id="@+id/action_detalleMesasFragment_to_mesasFragment"
-            app:destination="@id/mesasFragment" />
-    </fragment>
+
     <fragment
         android:id="@+id/detallePedidoFragment"
         android:name="com.example.appfinalcafe.ui.Pedidos.DetallePedidoFragment"
@@ -87,11 +60,14 @@
             android:id="@+id/action_detallePedidoFragment_to_nav_slideshow"
             app:destination="@id/nav_slideshow" />
     </fragment>
+
     <fragment
         android:id="@+id/inicioFragment"
         android:name="com.example.appfinalcafe.ui.Inicio.InicioFragment"
         android:label="Inicio"
         tools:layout="Inicio" />
+
+
     <fragment
         android:id="@+id/seleccionarProductoFragment"
         android:name="com.example.appfinalcafe.ui.Productos.SeleccionarProductoFragment"
@@ -101,6 +77,8 @@
             android:id="@+id/action_seleccionarProductoFragment_to_nav_slideshow"
             app:destination="@id/nav_slideshow" />
     </fragment>
+
+
     <fragment
         android:id="@+id/cierreDiarioFragment"
         android:name="com.example.appfinalcafe.ui.CierreDiario.CierreDiarioFragment"

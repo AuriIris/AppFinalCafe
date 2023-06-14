@@ -1,11 +1,15 @@
 package com.example.appfinalcafe.ui.Pedidos;
 
+import android.app.Activity;
 import android.content.Context;
+import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.appfinalcafe.Model.Pedido;
@@ -74,6 +78,15 @@ public class PedidosAdapter extends RecyclerView.Adapter<PedidosAdapter.ViewHold
             tvestado = itemView.findViewById(R.id.textViewEstado);
             tvPrecio = itemView.findViewById(R.id.textViewPrecioTotal);
             tvfecha = itemView.findViewById(R.id.textViewFecha);
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Bundle bundle = new Bundle();
+                    Log.d("Pedido56+", pedidos.get(getAdapterPosition()) + " ");
+                    bundle.putSerializable("pedido", pedidos.get(getAdapterPosition()));
+                    Navigation.findNavController((Activity) context,R.id.nav_host_fragment_content_main).navigate(R.id.detallePedidoFragment, bundle);
+                }
+            });
         }
 
         public void bind(Pedido pedido) {

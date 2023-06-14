@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.navigation.NavOptions;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -17,6 +18,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.example.appfinalcafe.Model.DetallePedido;
 import com.example.appfinalcafe.Model.Mesa;
@@ -36,6 +38,7 @@ public class SeleccionarProductoFragment extends Fragment implements Seleccionar
     private EditText etCantidad;
     private SeleccionarProductosAdapter productosAdapter;
     private SeleccionarProductoViewModel seleccionarProductoViewModel;
+    private Button buttonAgregar;
     public SeleccionarProductoFragment() {
         // Constructor vacío requerido
     }
@@ -45,23 +48,15 @@ public class SeleccionarProductoFragment extends Fragment implements Seleccionar
         View view = inflater.inflate(R.layout.fragment_seleccionar_producto, container, false);
         recyclerView = view.findViewById(R.id.rvProductos);
         AppCompatActivity activity = (AppCompatActivity) getActivity();
-        Button detalleButton = view.findViewById(R.id.buttonAgregar);
+        buttonAgregar = view.findViewById(R.id.buttonAgregar1);
 
-        detalleButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Bundle bundle = new Bundle();
-                Navigation.findNavController(requireView()).navigate(R.id.action_seleccionarProductoFragment_to_nav_slideshow, bundle);
-            }
-        });
 
         Bundle bundle = getArguments();
         Pedido pedido = null;
         if (bundle != null) {
             pedido = (Pedido) bundle.getSerializable("pedido");
         }
-        final Pedido pedidoFinal = pedido;
-        Button buttonAgregar = view.findViewById(R.id.buttonAgregar);
+        final Pedido pedidoFinal = pedido;;
         etCantidad = view.findViewById(R.id.etCantidad);
         buttonAgregar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -70,13 +65,25 @@ public class SeleccionarProductoFragment extends Fragment implements Seleccionar
                 if (pedidoFinal != null) {
                     Producto productoSeleccionado = productosAdapter.getProductoSeleccionado();
                     String cantidadString = etCantidad.getText().toString();
-                    int cantidad = Integer.parseInt(cantidadString);
-                    Log.d("Detalle Pedido", pedidoFinal.getId()+" " +productoSeleccionado.getId() + " " + cantidad + " " + productoSeleccionado.getPrecio());
-                    seleccionarProductoViewModel.agregarProductoalPedido(pedidoFinal.getId(), productoSeleccionado.getId(), cantidad, productoSeleccionado.getPrecio());
-                    Bundle bundle = new Bundle();
-                    Log.d("Pedido56", pedidoFinal + " ");
-                    bundle.putSerializable("pedido", pedidoFinal);
-                    Navigation.findNavController(requireView()).navigate(R.id.action_seleccionarProductoFragment_to_nav_slideshow, bundle);
+
+                    //Log.d("Detalle Pedido", pedidoFinal.getId()+" " +productoSeleccionado.getId() + " " + cantidad + " " + productoSeleccionado.getPrecio());
+                    try {
+                        int cantidad = Integer.parseInt(cantidadString);
+                        seleccionarProductoViewModel.agregarProductoalPedido(pedidoFinal.getId(), productoSeleccionado.getId(), cantidad, productoSeleccionado.getPrecio());
+                        Bundle bundle = new Bundle();
+                        Log.d("Pedido56", pedidoFinal + " ");
+                        bundle.putSerializable("pedido", pedidoFinal);
+                        NavOptions op = new NavOptions.Builder()
+                                .setLaunchSingleTop(true)
+                                .setPopUpTo(R.id.nav_slideshow,false)
+                                .build();
+
+                        Navigation.findNavController(getActivity(),R.id.nav_host_fragment_content_main).navigate(R.id.action_seleccionarProductoFragment_to_nav_slideshow, bundle,op);
+                    }
+                    catch(Exception ex){
+                        Toast.makeText(activity, "Seleccione Producto e Ingrese Cantidad", Toast.LENGTH_SHORT).show();
+                    }
+
                 } else {
                     Log.d("Detalle Pedido", "El pedido es nulo");
                 }

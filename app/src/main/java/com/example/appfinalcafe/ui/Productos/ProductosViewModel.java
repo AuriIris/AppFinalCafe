@@ -22,8 +22,8 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class ProductosViewModel extends AndroidViewModel {
-    private MutableLiveData<List<DetallePedido>> detallePedidosLiveData = new MutableLiveData<>();
-    private MutableLiveData<Pedido> pedidoLiveData = new MutableLiveData<>();
+    private MutableLiveData<List<DetallePedido>> detallePedidosLiveData;
+    private MutableLiveData<Pedido> pedidoLiveData;
     private ApiClientRetrofit.EndpointCafe apiClient;
     private Context contexto;
 
@@ -34,6 +34,9 @@ public class ProductosViewModel extends AndroidViewModel {
     }
 
     public LiveData<List<DetallePedido>> getDetallePedidosLiveData() {
+        if (detallePedidosLiveData == null) {
+            detallePedidosLiveData = new MutableLiveData<>();
+        }
         return detallePedidosLiveData;
     }
 

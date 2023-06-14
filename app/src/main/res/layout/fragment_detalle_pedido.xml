@@ -39,7 +39,7 @@
         <androidx.appcompat.widget.AppCompatSpinner
             android:id="@+id/spinnerMesa"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="65dp"
             android:enabled="false" />
 
         <TextView
@@ -70,7 +70,7 @@
         <androidx.appcompat.widget.AppCompatSpinner
             android:id="@+id/spinnerEstado"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="65dp"
             android:enabled="false" />
 
         <TextView
@@ -137,6 +137,12 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1" />
+
+        <Button
+            android:id="@+id/btnDPAgregar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Button" />
 
         <Button
             android:id="@+id/btnEditarPedido"

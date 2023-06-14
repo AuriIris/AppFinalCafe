@@ -47,7 +47,6 @@ public class PerfilFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         View view = inflater.inflate(R.layout.fragment_perfil, container, false);
-
         rolSpinner = view.findViewById(R.id.spinnerRol);
         rolAdapter = new ArrayAdapter<>(requireContext(), android.R.layout.simple_spinner_dropdown_item, rol);
         rolSpinner.setAdapter(rolAdapter);

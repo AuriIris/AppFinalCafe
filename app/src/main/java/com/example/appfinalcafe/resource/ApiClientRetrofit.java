@@ -42,8 +42,12 @@ public class ApiClientRetrofit {
     }
 
     public interface EndpointCafe {
+        @POST("Usuario/verify")
+        Call<String> loginGoogle(@Header("Authorization") String token);
+
         @POST("Usuario/login")
         Call<String> login(@Body Usuario user);
+
 
         @GET("Usuario/perfil")
         Call<Usuario> obtenerPerfil(@Header("Authorization") String token);

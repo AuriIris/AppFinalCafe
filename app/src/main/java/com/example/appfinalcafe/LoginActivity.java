@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
 
@@ -16,12 +17,20 @@ import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.common.SignInButton;
 import com.google.android.gms.common.api.ApiException;
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthCredential;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.auth.GoogleAuthProvider;
+import com.example.appfinalcafe.R;
+import android.content.res.Resources;
 
 public class LoginActivity extends AppCompatActivity {
 
     private ActivityLoginBinding binding;
-    private LoginViewModel viewModel;
+    private LoginViewModel viewModel1;
     private GoogleSignInClient googleSignInClient;
     private static final int RC_SIGN_IN = 123;
 
@@ -31,11 +40,13 @@ public class LoginActivity extends AppCompatActivity {
         binding = ActivityLoginBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        viewModel = new ViewModelProvider(this).get(LoginViewModel.class);
+        viewModel1 = new ViewModelProvider(this).get(LoginViewModel.class);
 
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                .requestIdToken(getResources().getString(R.string.default_web_client_id1))
                 .requestEmail()
                 .build();
+
         googleSignInClient = GoogleSignIn.getClient(this, gso);
         binding.btnGoogle.setSize(SignInButton.SIZE_STANDARD);
         binding.btnGoogle.setOnClickListener(new View.OnClickListener() {
@@ -50,7 +61,7 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View view) {
                 String email = binding.editTextMail.getText().toString();
                 String password = binding.editTextPass.getText().toString();
-                viewModel.login(email, password);
+                viewModel1.login(email, password);
             }
         });
     }
@@ -74,15 +85,24 @@ public class LoginActivity extends AppCompatActivity {
         try {
             GoogleSignInAccount account = completedTask.getResult(ApiException.class);
             String googleToken = account.getIdToken();
-            String email = account.getEmail();
-            String displayName = account.getDisplayName();
-            Log.d("Login", "handleGoogleSignInResult: "+email + " "+ displayName);
-            viewModel.loginGoogle(email);
-            //La consulta es esta
-            // ya me devuelve correctamente el nombrey el mail, ahora que tiene que hacer?
+            String nombre = account.getEmail();
+            String mail = account.getDisplayName();
+            Log.d("Login",nombre+ " "+ mail + " "+googleToken);
+
+            if (googleToken != null) {
+                viewModel1.loginGoogle(googleToken);
+            } else {
+                // El token de ID de Google es nulo
+                Log.e("LoginActivity", "El token de ID de Google es nulo");
+            }
+
+            // Resto del código...
         } catch (ApiException e) {
             // Error al iniciar sesión con Google
             Log.e("LoginActivity", "Error al iniciar sesión con Google: " + e.getMessage());
         }
     }
+
+
+
 }

@@ -26,13 +26,13 @@
         android:hint="Cantidad"
         android:inputType="number"
         android:padding="12dp"
-        app:layout_constraintBottom_toTopOf="@+id/buttonAgregar"
+        app:layout_constraintBottom_toTopOf="@+id/buttonAgregar1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/rvProductos" />
 
     <Button
-        android:id="@+id/buttonAgregar"
+        android:id="@+id/buttonAgregar1"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"

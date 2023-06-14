@@ -24,11 +24,11 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class DetallePedidoViewModel extends AndroidViewModel {
-    private MutableLiveData<Pedido> pedidoLiveData = new MutableLiveData<>();
+    private MutableLiveData<Pedido> pedidoLiveData;
     private MutableLiveData<List<Mesa>> mesasLiveData;
-    private MutableLiveData<List<DetallePedido>> detallePedidosLiveData = new MutableLiveData<>();
+    private MutableLiveData<List<DetallePedido>> detallePedidosLiveData;
 
-    private MutableLiveData<List<Producto>> productoLiveData = new MutableLiveData<>();
+    private MutableLiveData<List<Producto>> productoLiveData;
     private ApiClientRetrofit.EndpointCafe apiClient;
     private Context contexto;
 
@@ -98,17 +98,22 @@ public class DetallePedidoViewModel extends AndroidViewModel {
             @Override
             public void onResponse(Call<List<DetallePedido>> call, Response<List<DetallePedido>> response) {
                 if (response.isSuccessful()) {
-                    detallePedidosLiveData.postValue(response.body());
-                } else {
-                    Log.d("Ver", response.message());
+                    if(response.body().size()>0) {
+                        detallePedidosLiveData.postValue(response.body());
+                    }
+                    else {
+                        Log.d("Ver", response.message());
+                        ArrayList<DetallePedido> detped = new ArrayList<>();
+                        DetallePedido pedidoVacio = new DetallePedido();
+                        Producto producto = new Producto(0, "", 0, 0, 0);
+                        pedidoVacio.setPedidoId(id);
+                        pedidoVacio.setProducto(producto);
+                        detped.add(pedidoVacio);
+                        detallePedidosLiveData.postValue(detped);
+                    }
+                }
+                else {
                     Toast.makeText(contexto, "Error al obtener los Productos del pedido", Toast.LENGTH_SHORT).show();
-                    ArrayList<DetallePedido> detped= new ArrayList<>();
-                    DetallePedido pedidoVacio= new DetallePedido();
-                    Producto producto=new Producto(0,"",0,0,0);
-                    pedidoVacio.setPedidoId(id);
-                    pedidoVacio.setProducto(producto);
-                    detped.add(pedidoVacio);
-                    detallePedidosLiveData.postValue(detped);
                 }
             }
 

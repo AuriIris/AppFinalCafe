@@ -16,7 +16,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/buttonAgregar"
+        android:id="@+id/buttonAgregar1"
         android:layout_width="match_parent"
         android:layout_height="59dp"
         android:text="Agregar"

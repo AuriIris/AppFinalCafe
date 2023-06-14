@@ -50,6 +50,7 @@ public class DetallePedidoFragment extends Fragment {
     private EditText FechayHoraEditText;
     private EditText HoraEditText;
     private Button EditarPedidoBtn;
+    private Button AgregarPedidoBtn;
     private DatePicker datePicker;
     private TimePicker timePicker;
 
@@ -58,6 +59,7 @@ public class DetallePedidoFragment extends Fragment {
     private RecyclerView rvProductos;
     private ArrayAdapter<String> estadoAdapter;
     private ArrayAdapter<Mesa> mesaAdapter;
+    public static int cont=0;
 
     private List<Mesa> listaMesas = new ArrayList<>();
     private String[] estados = {
@@ -81,14 +83,15 @@ public class DetallePedidoFragment extends Fragment {
         //datePicker = view.findViewById(R.id.datePicker);
         //timePicker = view.findViewById(R.id.timePicker);
         EditarPedidoBtn = view.findViewById(R.id.btnEditarPedido);
+        AgregarPedidoBtn= view.findViewById(R.id.btnDPAgregar);
 
         detalleViewModel = new ViewModelProvider(requireActivity()).get(DetallePedidoViewModel.class);
 
         Bundle bundle = getArguments();
         if (bundle != null) {
             Pedido pedido = (Pedido) bundle.getSerializable("pedido");
-            if (pedido != null) {
-//                detalleViewModel.obtenerPedido(pedido.getId());
+            if (pedido != null&& cont==0) {
+                Log.d("Pedido56-", cont+"");
                 mostrarDatosPedido(pedido);
             }
         }
@@ -153,6 +156,12 @@ public class DetallePedidoFragment extends Fragment {
                 mesaAdapter.notifyDataSetChanged();
             }
         });
+        AgregarPedidoBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                detalleViewModel.getPedidoLiveData();
+            }
+        });
 
         estadoAdapter = new ArrayAdapter<>(requireContext(), android.R.layout.simple_spinner_dropdown_item, estados);
         spinnerEstado.setAdapter(estadoAdapter);
@@ -172,7 +181,18 @@ public class DetallePedidoFragment extends Fragment {
                     int usuarioId = Integer.parseInt(UsuarioIdEditText.getText().toString());
                     int estado = spinnerEstado.getSelectedItemPosition();
                     Double precio = Double.parseDouble(PrecioTotalEditText.getText().toString());
-                    String fecha = FechayHoraEditText.getText().toString()+" "+HoraEditText.getText().toString();
+                    String hora=HoraEditText.getText().toString();
+                    if(hora.charAt(1)==':'){
+                        hora="0"+hora;
+                    }
+                    if(hora.charAt(4)==':'){
+                        //necesito insertar un caracter en la posicion 3
+                        hora = hora.substring(0, 3) + "0" + hora.substring(3);
+                    }
+                    if(hora.length()==5){
+                        hora=hora+":00";
+                    }
+                    String fecha = FechayHoraEditText.getText().toString()+" "+hora;
 
                     int id = (idText.equals("")) ? 0 : Integer.parseInt(idText);
                     Pedido pedidoActualizado = new Pedido(id, mesaId, usuarioId, estado, precio, fecha);
@@ -185,46 +205,42 @@ public class DetallePedidoFragment extends Fragment {
                     PrecioTotalEditText.setEnabled(false);
                     FechayHoraEditText.setEnabled(false);
                     EditarPedidoBtn.setText("Editar Pedido");
+                    Navigation.findNavController(getActivity(),R.id.nav_host_fragment_content_main).navigate(R.id.nav_gallery, bundle);
                 }
             }
         });
         detalleViewModel.getPedidoLiveData().observe(getViewLifecycleOwner(), new Observer<Pedido>() {
             @Override
             public void onChanged(Pedido pedido) {
-                Bundle bundle = new Bundle();
-                Log.d("Pedido56", pedido + " ");
-                bundle.putSerializable("pedido", pedido);
-                Navigation.findNavController(requireView()).navigate(R.id.action_detallePedidoFragment_to_nav_slideshow, bundle);
+//                Bundle bundle = new Bundle();
+//                Log.d("Pedido56+", pedido + " ");
+//                bundle.putSerializable("pedido", pedido);
+//                Navigation.findNavController(getActivity(),R.id.nav_host_fragment_content_main).navigate(R.id.nav_slideshow, bundle);
             }
         });
         rvProductos = view.findViewById(R.id.rvProdEnDetalleProd);
         rvProductos.setLayoutManager(new LinearLayoutManager(requireContext()));
-        productosAdapter = new ProductosAdapter(requireContext(), new ProductosAdapter.OnItemClickListener() {
-            @Override
-            public void onProductoClick(DetallePedido detallePedido) {
-                    Bundle bundle = new Bundle();
-                    Log.d("ver", "onProductoClick: "+detallePedido.toString());
-                    detalleViewModel.obtenerPedido(detallePedido.getPedidoId());
-
-                }
-        });
-        rvProductos.setAdapter(productosAdapter);
-
-
 //        productosAdapter = new ProductosAdapter(requireContext(), new ProductosAdapter.OnItemClickListener() {
 //            @Override
 //            public void onProductoClick(DetallePedido detallePedido) {
-//                Bundle bundle = new Bundle();
-//                bundle.putSerializable("pedido", detallePedido.getPedido());
-//                Navigation.findNavController(requireView()).navigate(R.id.action_detallePedidoFragment_to_nav_slideshow, bundle);
-//            }
+//                    Bundle bundle = new Bundle();
+//                    Log.d("ver", "onProductoClick: "+detallePedido.toString());
+//                    detalleViewModel.obtenerPedido(detallePedido.getPedidoId());
+//
+//                }
 //        });
+
+
+
+
 
         detalleViewModel.getDetallePedidosLiveData().observe(getViewLifecycleOwner(), new Observer<List<DetallePedido>>() {
             @Override
             public void onChanged(List<DetallePedido> detallePedidos) {
+                productosAdapter=new ProductosAdapter(getContext(),detallePedidos);
+                rvProductos.setAdapter(productosAdapter);
                 Log.d("Salida", detallePedidos.size()+"");
-                productosAdapter.setProductos(detallePedidos);
+
             }
         });
 

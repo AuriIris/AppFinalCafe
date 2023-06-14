@@ -24,7 +24,7 @@
                 android:layout_height="wrap_content"
                 android:textSize="16sp"
                 android:textColor="#000000"
-                android:text="Pedido ID: "
+                android:text="Pedido: "
                 android:textStyle="bold" />
 
             <TextView
@@ -48,7 +48,7 @@
                 android:textColor="#000000"
                 android:textStyle="bold"
                 android:layout_height="wrap_content"
-                android:text="Mesa ID: " />
+                android:text="Mesa: " />
 
             <TextView
                 android:id="@+id/textViewMesaId"
@@ -71,7 +71,7 @@
                 android:textColor="#000000"
                 android:textStyle="bold"
                 android:layout_height="wrap_content"
-                android:text="Usuario ID: " />
+                android:text="Usuario: " />
 
             <TextView
                 android:id="@+id/textViewUsuarioId"

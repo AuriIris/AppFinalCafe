@@ -27,6 +27,7 @@ public class PedidosFragment extends Fragment implements PedidosAdapter.OnItemCl
     private PedidosAdapter pedidosAdapter;
     private PedidosViewModel pedidosViewModel;
 
+
     public PedidosFragment() {
         // Constructor vacío requerido
     }
@@ -37,7 +38,7 @@ public class PedidosFragment extends Fragment implements PedidosAdapter.OnItemCl
 
         AppCompatActivity activity = (AppCompatActivity) getActivity();
         Button detalleButton = view.findViewById(R.id.buttonaddPedido);
-
+        DetallePedidoFragment.cont=0;
         detalleButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -52,9 +53,9 @@ public class PedidosFragment extends Fragment implements PedidosAdapter.OnItemCl
                 pedido.setUsuarioId(0);
                 //Modificar el estado de la mesa
 
-                Bundle bundle = new Bundle();
-                bundle.putSerializable("pedido", pedido);
-                Navigation.findNavController(requireView()).navigate(R.id.action_nav_gallery_to_detallePedidoFragment, bundle);
+//                Bundle bundle = new Bundle();
+//                bundle.putSerializable("pedido", pedido);
+//                Navigation.findNavController(requireView()).navigate(R.id.action_nav_gallery_to_detallePedidoFragment, bundle);
             }
         });
         return view;

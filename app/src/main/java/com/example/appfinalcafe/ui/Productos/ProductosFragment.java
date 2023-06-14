@@ -18,6 +18,7 @@ import com.example.appfinalcafe.Model.DetallePedido;
 import com.example.appfinalcafe.Model.Pedido;
 import com.example.appfinalcafe.Model.Producto;
 import com.example.appfinalcafe.R;
+import com.example.appfinalcafe.ui.Pedidos.DetallePedidoFragment;
 import com.example.appfinalcafe.ui.Pedidos.ProductosAdapter;
 
 import java.io.Serializable;
@@ -38,9 +39,9 @@ public class ProductosFragment extends Fragment implements ProductosAdapter.OnIt
         View view = inflater.inflate(R.layout.fragment_productos, container, false);
         rvProductos = view.findViewById(R.id.rvProductos);
         rvProductos.setLayoutManager(new LinearLayoutManager(requireContext()));
+        DetallePedidoFragment.cont=1;
 
-        productosAdapter = new ProductosAdapter(requireContext(), this);
-        rvProductos.setAdapter(productosAdapter);
+
         productosViewModel = new ViewModelProvider(this).get(ProductosViewModel.class);
         Bundle bundle = getArguments();
         Pedido pedido = (Pedido) bundle.getSerializable("pedido");
@@ -49,7 +50,8 @@ public class ProductosFragment extends Fragment implements ProductosAdapter.OnIt
         productosViewModel.getDetallePedidosLiveData().observe(getViewLifecycleOwner(), new Observer<List<DetallePedido>>() {
             @Override
             public void onChanged(List<DetallePedido> detallesPedido) {
-                productosAdapter.setProductos(detallesPedido);
+                productosAdapter = new ProductosAdapter(requireContext(), detallesPedido);
+                rvProductos.setAdapter(productosAdapter);
             }
         });
 
@@ -61,7 +63,7 @@ public class ProductosFragment extends Fragment implements ProductosAdapter.OnIt
                     Bundle bundle = new Bundle();
                     bundle.putSerializable("pedido", pedido);
                     Log.d("ProductosFragment", pedido+"");
-                    Navigation.findNavController(requireView()).navigate(R.id.action_nav_slideshow_to_seleccionarProductoFragment, bundle);
+                    Navigation.findNavController(getActivity(),R.id.nav_host_fragment_content_main).navigate(R.id.seleccionarProductoFragment, bundle);
                 } else {
                     Log.d("ProductosFragment", "El objeto pedido es nulo");
                 }
@@ -73,15 +75,6 @@ public class ProductosFragment extends Fragment implements ProductosAdapter.OnIt
 
     @Override
     public void onProductoClick(DetallePedido detallePedido) {
-//        productosViewModel.obtenerDetallePedidos(detallePedido.getPedidoId());
-//
-//        productosViewModel.getDetallePedidosLiveData().observe(getViewLifecycleOwner(), new Observer<List<DetallePedido>>() {
-//            @Override
-//            public void onChanged(List<DetallePedido> detallesPedido) {
-//                Bundle bundle = new Bundle();
-//                bundle.putSerializable("productos", (Serializable) detallesPedido);
-//                Navigation.findNavController(requireView()).navigate(R.id.action_detallePedidoFragment_to_nav_slideshow, bundle);
-//            }
-//        });
+
     }
 }
